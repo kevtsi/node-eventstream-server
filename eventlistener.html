@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <h3>Awaiting Server-sent Events</h3>
+        <div id="result"></div>
+        
+        <script>
+            if(typeof(EventSource) !== "undefined") {
+                var source = new EventSource("http://localhost:3000/events");
+                source.onmessage = function(event) {
+                    document.getElementById("result").innerHTML += event.data + "<br>";
+                };
+            } else {
+                document.getElementById("result").innerHTML = "Browser not supported";
+            }
+        </script>
+        
+    </body>
+</html>
+
+
